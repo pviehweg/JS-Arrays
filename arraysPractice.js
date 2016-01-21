@@ -53,6 +53,7 @@ var reversedLooper = function(letters) {
   for (var i = 0; i < letters.length; i++) {
     letters.reverse(i);
     alert(letters[i]);
+    letters.reverse(i);
   }
 }
 reversedLooper(letters);
