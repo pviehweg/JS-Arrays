@@ -46,19 +46,17 @@ looper(family);
 
 
 var letters = ['A', 'B', 'C', 'D', 'E'];
-//Write a function called reversedLooper that is given letters as it's only argument and loops through the given array backwards alerting every 
+//Write a function called reversedLooper that is given letters as it's only argument and loops through the given array backwards 
+//alerting every 
 //item in the array starting at the end.
 
 var reversedLooper = function(letters) {
-  for (var i = 0; i < letters.length; i++) {
-    letters.reverse(i);
-    alert(letters[i]);
-    letters.reverse(i);
-  }
+  for (var i = letters.length; i > 0; i--) {
+    alert(letters[i-1]);
+    }
 }
 reversedLooper(letters);
 
-//TODO: find out why the crap it returns E, B, C, D, A. 
 //Next Problem
 
 
@@ -67,8 +65,9 @@ var nums = [1,2,3,6,22,98,45,23,22,12];
 
 var evenFinder = function(nums){
     for (var i = 0; i < nums.length; i++) {
-        if(!(nums[i]%2==0)){
+        if(nums[i]%2!==0){
             nums.splice(i, 1);
+            i--;
         }
     }
     return nums;
@@ -86,13 +85,20 @@ var odds = [];
 //Have divider return an Array with the first item in the array being the evens array (all the even values from nums) 
 //and the second item in the Array being the odds array(all the odd values from nums).
 
-var divider = function(nums, evens, odds) {
-    var evens = nums[i];
-    var odds = evens[i+1];
+function divider(nums) {
+   var evens = [];
+   var odds = [];
+    for (var i=0;i<nums.length;i++) {
+      if (nums[i]%2 == 0) {
+      evens.push(nums[i]);
+      }
+    else { odds.push(nums[i]);}
+      }
+  var array = [evens,odds];
+  return array;
 }
 
-
-  //Code Here
+divider(nums);    
 
 
 //Next Problem
@@ -106,23 +112,39 @@ var numbers = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
 //Your job is to write a function named finder that will get a random number, then loop through the array to see
 //if that random number is in the array. If it is, return true, if it's not, return false
 
-  //Code Here
+ function finder(numbers) {
+  var random = getRandomArbitrary();
+   console.log(random);
+    if (numbers.indexOf(random) >= 0) { 
+      return true;
+    } 
+    else { 
+      return false;
+    }
+   }
+
+ finder(numbers);
 
 
 //Next problem
 
 
 
-var str = 'this is my sentence';
+
 //Write a function called reverse that takes a given str as it's only argument and returns that string after it's been reversed
+var str = 'this is my sentence';
 
-  //Code Here
+function reverse(str) {
+  var o = [];
+  for (var i = 0, len = str.length; i <= len; i++)
+    o.push(str.charAt(len - i));
+  return o.join('');
+}
 
+reverse(str);
 
 //Next Problem
 
-
-var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 /*
   Here we're going to write a function that mimics going shopping and checking things off of our grocery list,
   and adding new items to our list. 
@@ -136,10 +158,26 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   myGroceryList then return the new, updated grocery list.
 */
 
-  //Code Here
 
-//removeItem(myGroceryList, 'chips') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
-//addItem(myGroceryList, 'Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
+var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
+
+
+var removeItem = function(list, item) {
+  for (var i = 0; i < list.length; i++) {
+      if (item === list[i]) {
+        list.splice(i, 1);
+        }
+  }
+   return list;
+}  
+
+var addItem = function(list, item) {
+  list.push(item);
+  return list;
+}
+
+removeItem(myGroceryList, 'chips') //--> //['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
+addItem(myGroceryList, 'Jerky') // --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
 
 
 
